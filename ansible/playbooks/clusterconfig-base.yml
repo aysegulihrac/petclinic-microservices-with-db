@@ -1,0 +1,23 @@
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration #defaulttan farklı ayarlar yapmak istersem kullanılır.
+kubernetesVersion: v1.23.5
+controlPlaneEndpoint: ${CONTROLPLANE_ENDPOINT} # master makinenin private ıp sini yazdırmak istiyorum. henüz bir makine ayağa kalkmadığı için böyle yapıyorum.
+networking:
+  podSubnet: 10.244.0.0/16
+apiServer:
+  extraArgs:
+    cloud-provider: external
+    enable-aggregator-routing: "true" #birden fazla master olunca root olası trafiği kont etmesi için enable etmek için true diyoruz.
+controllerManager:
+  extraArgs:
+    cloud-provider: external
+---
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: InitConfiguration
+nodeRegistration:   # yeni node girmek için yapılan ayar
+  kubeletExtraArgs:
+    cloud-provider: external
+---
+kind: KubeletConfiguration
+apiVersion: kubelet.config.k8s.io/v1beta1
+cgroupDriver: systemd  # kubeadm ile yapacağımız için 
