@@ -16,6 +16,10 @@ spec:
     - name: "8080"
       port: 8080
       targetPort: 8080
+<<<<<<< HEAD
+=======
+      nodePort: 30001
+>>>>>>> feature/msp-17
   selector:
     io.kompose.service: api-gateway
   type: NodePort

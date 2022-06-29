@@ -5,7 +5,10 @@ metadata:
     kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates
     kompose.image-pull-secret: regcred
     kompose.service.expose: '{{ .Values.DNS_NAME }}'
+<<<<<<< HEAD
     kompose.service.nodeport.port: "30001"
+=======
+>>>>>>> feature/msp-17
     kompose.service.type: nodeport
     kompose.version: 1.26.1 (a9d05d509)
   creationTimestamp: null
@@ -26,4 +29,8 @@ spec:
             path: /
             pathType: Prefix
 status:
+<<<<<<< HEAD
   loadBalancer: {}
+=======
+  loadBalancer: {}
+>>>>>>> feature/msp-17

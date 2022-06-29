@@ -31,6 +31,13 @@ spec:
           ports:
             - containerPort: 8761
           resources: {}
+<<<<<<< HEAD
+=======
+      initContainers: # kuberneteste bir servisi ayağa kaldırmak istiyorsak bu initContainer kullanılır.bu bir podun içinde bir tane daha container oluşturur.container çalışınca silinir.
+      - name: init-config-server
+        image: busybox
+        command: ['sh', '-c', 'until nc -z config-server:8888; do echo waiting for config-server; sleep 2; done;']
+>>>>>>> feature/msp-17
       imagePullSecrets:
         - name: regcred
       restartPolicy: Always
